@@ -7,12 +7,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CityController {
+public class FeignController {
     @Autowired
     private CityClient cityClient;
+
+    @Autowired
+    private CompanyClient companyClient;
 
     @RequestMapping(value = "/api/city/{id}", method = RequestMethod.GET)
     public String findOneCity(@PathVariable("id") int id) {
         return cityClient.findOneCity(id);
+    }
+
+    @RequestMapping(value = "/api/company", method = RequestMethod.GET)
+    public Object findAll() {
+        return companyClient.findAll();
     }
 }
