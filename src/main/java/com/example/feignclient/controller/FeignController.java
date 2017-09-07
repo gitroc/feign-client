@@ -35,7 +35,7 @@ public class FeignController {
     @RequestMapping(value = "/loan", method = RequestMethod.GET)
     public Object findList(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
                            @RequestParam(value = "size", required = false, defaultValue = "10") int size,
-                           @RequestParam(value = "loanLimit", required = false, defaultValue = "") long loanLimit) {
+                           @RequestParam(value = "loanLimit", required = false, defaultValue = "0") long loanLimit) {
         return loanClient.findList(page, size, loanLimit);
     }
 }
