@@ -2,11 +2,13 @@ package com.example.feignclient.service;
 
 import com.example.feignclient.service.impl.CompanyClientHystrix;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@Component
 @FeignClient(value = "eureka-song", fallback = CompanyClientHystrix.class)
 public interface CompanyClient {
     @RequestMapping(value = "/api/company/{id}", method = RequestMethod.GET)
